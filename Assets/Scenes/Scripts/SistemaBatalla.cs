@@ -62,22 +62,18 @@ public class SistemaBatalla : MonoBehaviour
         {
             if (angleX <= 70 && angleX >= 45)
             {
-                estado = BattleState.TURNOJUGADOR;
                 BotonAtkArriba();
             }
             else if (angleX <= -45 && angleX >= -70)
             {
-                estado = BattleState.TURNOJUGADOR;
                 BotonAtkAbajo();
             }
             else if (angleY <= 70 && angleY >= 45)
             {
-                estado = BattleState.TURNOJUGADOR;
                 BotonAtkDer();
             }
             else if (angleY <= -45 && angleY >= -70)
             {
-                estado = BattleState.TURNOJUGADOR;
                 BotonAtkIzq();
             }
         }
@@ -203,8 +199,8 @@ public class SistemaBatalla : MonoBehaviour
 
     public void BotonAtkArriba() //Ataque de Luz
     {
-        // if (estado != BattleState.ELEGIRHECHIZO)
-        //    return;
+         if (estado != BattleState.ELEGIRHECHIZO)
+            return;
 
         arduino.amarilloOn();
         mensajeTexto.text = "Has realizado un ataque de luz";
@@ -222,8 +218,8 @@ public class SistemaBatalla : MonoBehaviour
     }
     public void BotonAtkAbajo() //Ataque de Agua
     {
-        //if (estado != BattleState.ELEGIRHECHIZO)
-        //    return;
+        if (estado != BattleState.ELEGIRHECHIZO)
+            return;
 
         arduino.blancoOn();
         mensajeTexto.text = "Has realizado un ataque de agua";
@@ -241,8 +237,8 @@ public class SistemaBatalla : MonoBehaviour
     }
     public void BotonAtkIzq() //Ataque de planta
     {
-        // if (estado != BattleState.ELEGIRHECHIZO)
-        //     return;
+         if (estado != BattleState.ELEGIRHECHIZO)
+             return;
 
         arduino.verdeOn();
         mensajeTexto.text = "Has realizado un ataque de planta";
@@ -260,8 +256,8 @@ public class SistemaBatalla : MonoBehaviour
     }
     public void BotonAtkDer() //Ataque de fuego
     {
-        //if (estado != BattleState.ELEGIRHECHIZO)
-        //   return;
+        if (estado != BattleState.ELEGIRHECHIZO)
+           return;
 
         arduino.rojoOn();
         mensajeTexto.text = "Has realizado un ataque de fuego";
