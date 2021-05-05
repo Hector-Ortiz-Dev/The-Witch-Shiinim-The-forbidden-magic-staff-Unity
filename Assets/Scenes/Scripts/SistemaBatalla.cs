@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public enum BattleState
 {
@@ -155,7 +156,14 @@ public class SistemaBatalla : MonoBehaviour
         {
             entiWitch.anim.SetTrigger(Animator.StringToHash("Muerte"));
             mensajeTexto.text = "Haz sido derrotado.";
+            StartCoroutine(GameOver());
         }
+    }
+
+    IEnumerator GameOver()
+    {
+        yield return new WaitForSeconds(5f);
+        SceneManager.LoadScene("Game Over");
     }
 
     IEnumerator TurnoEnemigo()
