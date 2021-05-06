@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
+    public Animator fade;
     public void Jugar()
     {
         SceneManager.LoadScene("Batalla");

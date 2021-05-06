@@ -20,7 +20,9 @@ public enum BattleState
 public class SistemaBatalla : MonoBehaviour
 {
     public GameObject jugadorPrefab;
-    public GameObject enemigoPrefab;
+    public List<GameObject> enemigoPrefab;
+    //Prefabs enemigo;
+    //public GameObject enemigoPrefab;
 
     public Transform spawnJugador;
     public Transform spawnEnemigo;
@@ -41,12 +43,14 @@ public class SistemaBatalla : MonoBehaviour
     public BattleState estado;
     Quaternion rotInicial;
 
+    int fase;
 
     void Start()
     {
         estado = BattleState.INICIO;
         StartCoroutine(ConfigBatalla());
         rotInicial = entiWitch.transform.rotation;
+        fase = 1;
     }
 
     void Update()
@@ -86,8 +90,9 @@ public class SistemaBatalla : MonoBehaviour
         GameObject jugadorGo = Instantiate(jugadorPrefab, spawnJugador);
         entiWitch = jugadorGo.GetComponent<Unidad>();
 
-        GameObject enemigoGo = Instantiate(enemigoPrefab, spawnEnemigo);
-        enemigoUnidad = enemigoGo.GetComponent<Unidad>();
+        GameObject enemigoGo = Instantiate(enemigoPrefab[0], spawnEnemigo);    //Instanciar un enemigo al spawn
+
+        enemigoUnidad = enemigoGo.GetComponent<Unidad>(); //Obtener el componente Unidad
 
         mensajeTexto.text = "Ha aparecido " + "<b>" + enemigoUnidad.nombre + "</b>" + ".";
 
@@ -151,6 +156,7 @@ public class SistemaBatalla : MonoBehaviour
         {
             mensajeTexto.text = "Haz ganado la batalla!";
             StartCoroutine(Resultados());
+            Gana();
         }
         else if (estado == BattleState.PIERDE)
         {
@@ -158,6 +164,12 @@ public class SistemaBatalla : MonoBehaviour
             mensajeTexto.text = "Haz sido derrotado.";
             StartCoroutine(GameOver());
         }
+    }
+
+    public void Gana()
+    {
+        fase ++;
+        ConfigBatalla();
     }
 
     IEnumerator GameOver()

@@ -694,8 +694,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3331855374729911306}
-  m_LocalRotation: {x: -0, y: -0.96567565, z: -0, w: 0.25975123}
-  m_LocalPosition: {x: 8.614662, y: 6.47, z: 4.383198}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6468898807581709870}
@@ -705,7 +705,7 @@ Transform:
   - {fileID: 877380364626374282}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -149.889, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &9171180805557410586
 Animator:
   serializedVersion: 3
@@ -737,19 +737,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86c42477493738c41924a5cc656bb486, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nombre: 
-  tipo: 0
-  nivel: 0
-  exp: 0
-  vidaMax: 0
-  atk: 0
+  nombre: Cebolla
+  tipo: 3
+  nivel: 2
+  exp: 10
+  vidaMax: 10
+  atk: 2
   def: 0
   vel: 0
   buffVida: 0
   buffAtk: 0
   buffDef: 0
   buffVel: 0
-  anim: {fileID: 0}
+  anim: {fileID: 9171180805557410586}
 --- !u!1 &3667714652700381843
 GameObject:
   m_ObjectHideFlags: 0
