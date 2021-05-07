@@ -181,6 +181,14 @@ MonoBehaviour:
   numNivel: {fileID: 1703727021}
   numExp: {fileID: 0}
   imgTipo: {fileID: 2026843733}
+  Tipos:
+  - {fileID: 21300000, guid: 7d36d88956d88f14ead73c90b76e355a, type: 3}
+  - {fileID: 21300000, guid: 52be3053bb441a049aac4cd6ecc269a3, type: 3}
+  - {fileID: 21300000, guid: 7b4425fdeff5b8041a4235f1d42998a4, type: 3}
+  - {fileID: 21300000, guid: 7f7796d5f7ea6c34a97d5fa73e5dadb7, type: 3}
+  - {fileID: 21300000, guid: b3dfffb8640f84f4f9fa8a1ed61a8506, type: 3}
+  - {fileID: 21300000, guid: 7286befcb96b2e54bb6141d97df87e50, type: 3}
+  - {fileID: 21300000, guid: d7d62c1d5b0603c45b609afbfb94b66c, type: 3}
   imgVidaC: {fileID: 47754018}
   imgExpBar: {fileID: 0}
 --- !u!114 &30169039
@@ -741,7 +749,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7d36d88956d88f14ead73c90b76e355a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d7d62c1d5b0603c45b609afbfb94b66c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -990,7 +998,7 @@ RectTransform:
   - {fileID: 1318331049}
   - {fileID: 2031551685}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1140,7 +1148,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -1530,7 +1538,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: c00786fd1f54f4c4faa6ad6ce886fc0a, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c00786fd1f54f4c4faa6ad6ce886fc0a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1707,6 +1715,10 @@ PrefabInstance:
     - target: {fileID: 1595105077517179013, guid: c00786fd1f54f4c4faa6ad6ce886fc0a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 1.631
+      objectReference: {fileID: 0}
+    - target: {fileID: 2488952606883812498, guid: c00786fd1f54f4c4faa6ad6ce886fc0a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2773275915366909241, guid: c00786fd1f54f4c4faa6ad6ce886fc0a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2151,7 +2163,15 @@ MonoBehaviour:
   numVida: {fileID: 1225661729}
   numNivel: {fileID: 1144569780}
   numExp: {fileID: 1056348026}
-  imgTipo: {fileID: 0}
+  imgTipo: {fileID: 346887848}
+  Tipos:
+  - {fileID: 21300000, guid: 7d36d88956d88f14ead73c90b76e355a, type: 3}
+  - {fileID: 21300000, guid: 52be3053bb441a049aac4cd6ecc269a3, type: 3}
+  - {fileID: 21300000, guid: 7b4425fdeff5b8041a4235f1d42998a4, type: 3}
+  - {fileID: 21300000, guid: 7f7796d5f7ea6c34a97d5fa73e5dadb7, type: 3}
+  - {fileID: 21300000, guid: b3dfffb8640f84f4f9fa8a1ed61a8506, type: 3}
+  - {fileID: 21300000, guid: 7286befcb96b2e54bb6141d97df87e50, type: 3}
+  - {fileID: 21300000, guid: d7d62c1d5b0603c45b609afbfb94b66c, type: 3}
   imgVidaC: {fileID: 1928475588}
   imgExpBar: {fileID: 2002562890}
 --- !u!114 &978536881
@@ -2788,6 +2808,14 @@ MonoBehaviour:
   jugadorPrefab: {fileID: 7447808959806431977, guid: 5e70829ae633cd842999a409d5b1c9ab, type: 3}
   enemigoPrefab:
   - {fileID: 3331855374729911306, guid: 4484bbfcef41d4c45b37ec0025b2fa91, type: 3}
+  - {fileID: 8021387382813521010, guid: ac321646a5bfd304c823cea08b58136f, type: 3}
+  - {fileID: 4190189904449118371, guid: 6a8254978e5cd9f45a8848b9b68ae933, type: 3}
+  - {fileID: 9137944708856498486, guid: a02be4b27e42e7e42b97a01b4c11b76d, type: 3}
+  - {fileID: 8216497110545172498, guid: a592190cc53dd6746a493efc54148bd5, type: 3}
+  - {fileID: 4653815123907004978, guid: f8a66badfd1f0694bba99941ae2ebece, type: 3}
+  - {fileID: 2010974456540122309, guid: 122c6ee550084c340ba0b7badc35fa9e, type: 3}
+  - {fileID: 5499572865664776021, guid: ce69b878ecbb5554696958bfa4f74649, type: 3}
+  - {fileID: 2015417793748559898, guid: 83306f29b60bb944d8150dc45238e1ee, type: 3}
   spawnJugador: {fileID: 1083363311}
   spawnEnemigo: {fileID: 1079594728}
   mensajeTexto: {fileID: 568536984}
@@ -2808,7 +2836,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1318331048
 GameObject:
@@ -4256,7 +4284,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5807882228980584810, guid: f28460968db38f2478bb0e7e542ffd1a, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5807882228980584810, guid: f28460968db38f2478bb0e7e542ffd1a, type: 3}
       propertyPath: m_LocalPosition.x

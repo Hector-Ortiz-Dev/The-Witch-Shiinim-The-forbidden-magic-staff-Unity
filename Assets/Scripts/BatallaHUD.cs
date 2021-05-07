@@ -10,7 +10,7 @@ public class BatallaHUD : MonoBehaviour
     public Text numNivel;
     public Text numExp;
     public Image imgTipo;
-
+    public List<Sprite> Tipos;
     //Nuevas
     public Image imgVidaC;
     public Image imgExpBar;
@@ -23,6 +23,44 @@ public class BatallaHUD : MonoBehaviour
         numVida.text = "" + unidad.vidaActual;
 
         numNivel.text = "Nv." + unidad.nivel;
+
+        switch(unidad.tipo)
+        {
+            case listaTipo.jugador:
+                Debug.Log("Colocando sprite 0");
+                imgTipo.sprite = Tipos[0];
+                break;
+
+            case listaTipo.agua:
+                Debug.Log("Colocando sprite 1");
+                imgTipo.sprite = Tipos[1];
+                break;
+
+            case listaTipo.fuego:
+                Debug.Log("Colocando sprite 2");
+                imgTipo.sprite = Tipos[2];
+                break;
+
+            case listaTipo.planta:
+                Debug.Log("Colocando sprite 3");
+                imgTipo.sprite = Tipos[3];
+                break;
+
+            case listaTipo.tierra:
+                Debug.Log("Colocando sprite 4");
+                imgTipo.sprite = Tipos[4];
+                break;
+
+            case listaTipo.oscuridad:
+                Debug.Log("Colocando sprite 5");
+                imgTipo.sprite = Tipos[5];
+                break;
+
+            case listaTipo.luz:
+                Debug.Log("Colocando sprite 6");
+                imgTipo.sprite = Tipos[6];
+                break;
+        }
 
         //Solo el jugador muestra su exp
         if(unidad.tipo == 0)
@@ -49,6 +87,7 @@ public class BatallaHUD : MonoBehaviour
             else
             imgVidaC.fillAmount = 0.215f;
      }
+     
     public void llenarExp(Unidad unidad)
     {
         velocidad = 3f * Time.deltaTime;
@@ -83,8 +122,6 @@ public class BatallaHUD : MonoBehaviour
 
     public void actVida(int vidaActual, int vidaMax)
     {
-        //sliderVida.value = vidaActual;
-
         numVida.text = "" + vidaActual;
     }
 

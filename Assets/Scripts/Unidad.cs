@@ -11,7 +11,6 @@ public enum listaTipo
         tierra,
         oscuridad,
         luz
-
     }
 public class Unidad : MonoBehaviour
 {
@@ -67,7 +66,54 @@ public class Unidad : MonoBehaviour
     }
 
     //Funcion que se ejecuta al momento de atacar
-    public bool RecibeDanio(int dmg)
+    public bool RecibeDanioJ(int dmg, string tipoAtk, string tipoEnemigo)
+    {
+        if (tipoAtk == tipoEnemigo)
+        {
+            Debug.Log("Ataque Nulo");
+            dmg = 0;
+        }
+        else if(tipoAtk == "agua" && tipoEnemigo == "fuego")
+        {
+            Debug.Log("Ataque supereficaz");
+            dmg *= 2;
+        }
+        else if(tipoAtk == "planta" && tipoEnemigo == "agua")
+        {
+            Debug.Log("Ataque supereficaz");
+            dmg *= 2;
+        }
+        else if(tipoAtk == "fuego" && tipoEnemigo == "planta")
+        {
+            Debug.Log("Ataque supereficaz");
+            dmg *= 2;
+        }
+        else if(tipoAtk == "luz" && tipoEnemigo == "oscuridad")
+        {
+            Debug.Log("Ataque supereficaz");
+            dmg = 9999;
+        }
+        else if(tipoAtk == "agua" && tipoEnemigo == "tierra")
+        {
+            Debug.Log("Ataque supereficaz");
+            dmg *= 2;
+        }
+
+        Debug.Log("Reduciendo vida de la entidad");
+        vidaActual -= dmg;
+
+        //Si esta muerto es true
+        Debug.Log("Si la vida es 0 o menos se muere");
+        if (vidaActual <= 0)
+        {
+            vidaActual = 0;
+            return true;
+        }
+        else
+            return false;
+    }
+
+    public bool RecibeDanioE(int dmg)
     {
         Debug.Log("Reduciendo vida de la entidad");
         vidaActual -= dmg;

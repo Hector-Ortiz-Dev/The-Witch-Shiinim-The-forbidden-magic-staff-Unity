@@ -21,8 +21,6 @@ public class SistemaBatalla : MonoBehaviour
 {
     public GameObject jugadorPrefab;
     public List<GameObject> enemigoPrefab;
-    //Prefabs enemigo;
-    //public GameObject enemigoPrefab;
 
     public Transform spawnJugador;
     public Transform spawnEnemigo;
@@ -44,13 +42,14 @@ public class SistemaBatalla : MonoBehaviour
     Quaternion rotInicial;
 
     int fase;
+    string tipoAtk;
 
     void Start()
     {
         estado = BattleState.INICIO;
         StartCoroutine(ConfigBatalla());
         rotInicial = entiWitch.transform.rotation;
-        fase = 1;
+        fase = 0;
     }
 
     void Update()
@@ -87,14 +86,20 @@ public class SistemaBatalla : MonoBehaviour
     IEnumerator ConfigBatalla()
     {
         Debug.Log("Configurando Batalla");
-        GameObject jugadorGo = Instantiate(jugadorPrefab, spawnJugador);
-        entiWitch = jugadorGo.GetComponent<Unidad>();
+        Debug.Log("Fase: " + fase);
+        if (fase == 9)
+            SceneManager.LoadScene("Victoria");
 
-        GameObject enemigoGo = Instantiate(enemigoPrefab[0], spawnEnemigo);    //Instanciar un enemigo al spawn
+        if (estado == BattleState.INICIO)
+        {
+            GameObject jugadorGo = Instantiate(jugadorPrefab, spawnJugador); //Instanciar un personaje del jugador al spawn
+            entiWitch = jugadorGo.GetComponent<Unidad>();   //Obtener el componente Unidad del jugador
+        }
 
+        GameObject enemigoGo = Instantiate(enemigoPrefab[fase], spawnEnemigo);    //Instanciar un enemigo al spawn
         enemigoUnidad = enemigoGo.GetComponent<Unidad>(); //Obtener el componente Unidad
 
-        mensajeTexto.text = "Ha aparecido " + "<b>" + enemigoUnidad.nombre + "</b>" + ".";
+        mensajeTexto.text = "Ha aparecido " + "<b><color=#b40404>" + enemigoUnidad.nombre + "</color></b>" + ".";
 
         entiWitch.configExpSig();
 
@@ -124,11 +129,11 @@ public class SistemaBatalla : MonoBehaviour
 
         //Recibe danio y verifica si esta muerto
         Debug.Log("Verificando si el enemigo esta muerto.");
-        bool estaMuerto = enemigoUnidad.RecibeDanio(entiWitch.atk);
+        bool estaMuerto = enemigoUnidad.RecibeDanioJ(entiWitch.atk, tipoAtk, enemigoUnidad.tipo.ToString());
 
         Debug.Log("Actualizando HUD del enemigo");
         enemigoHUD.actVida(enemigoUnidad.vidaActual, enemigoUnidad.vidaMax);
-        mensajeTexto.text = "Haz atacado a " + enemigoUnidad.nombre;
+        mensajeTexto.text = "Haz atacado a " + "<b><color=#b40404>" + enemigoUnidad.nombre + "</color></b>";
 
         Debug.Log("Esperando 2 seg");
         yield return new WaitForSeconds(2f);
@@ -137,6 +142,7 @@ public class SistemaBatalla : MonoBehaviour
         {
             Debug.Log("EL enemigo murio");
             //Fin de la batalla
+            StartCoroutine(MuereEnemigo());
             estado = BattleState.RESULTADOS;
             Debug.Log("Se ha actualizado el estado a Resultados");
             FinBatalla();
@@ -149,27 +155,34 @@ public class SistemaBatalla : MonoBehaviour
         }   //Turno del enemigo
     }
 
+    IEnumerator MuereEnemigo()
+    {
+        Debug.Log("Ejecutando funcion Muere Enemigo");
+        Destroy(enemigoUnidad.gameObject);
+        yield return new WaitForSeconds(2f);
+    }
+
     public void FinBatalla()
     {
         Debug.Log("Ejecutando la funcion Fin de la batalla");
         if (estado == BattleState.RESULTADOS)
         {
-            mensajeTexto.text = "Haz ganado la batalla!";
+            mensajeTexto.text = "<b>Haz ganado la batalla!</b>";
             StartCoroutine(Resultados());
-            Gana();
         }
         else if (estado == BattleState.PIERDE)
         {
             entiWitch.anim.SetTrigger(Animator.StringToHash("Muerte"));
-            mensajeTexto.text = "Haz sido derrotado.";
+            mensajeTexto.text = "<b>Haz sido derrotado.</b>";
             StartCoroutine(GameOver());
         }
     }
 
     public void Gana()
     {
+        Debug.Log("Ejecutando funcion de Gana y aumentando variable fase.");
         fase ++;
-        ConfigBatalla();
+        StartCoroutine(ConfigBatalla());
     }
 
     IEnumerator GameOver()
@@ -182,13 +195,13 @@ public class SistemaBatalla : MonoBehaviour
     {
         Debug.Log("Se ha ejecutado la funcion Turno del Enemigo");
         entiWitch.transform.rotation = rotInicial;
-        mensajeTexto.text = enemigoUnidad.nombre + " ataca!";
+        mensajeTexto.text = "<b><color=#b40404>" + enemigoUnidad.nombre + "</color></b> ataca!";
 
         Debug.Log("Esperando 1 segundo");
         yield return new WaitForSeconds(1f);
 
         Debug.Log("Reduciendo vida del jugador");
-        bool estaMuerto = entiWitch.RecibeDanio(enemigoUnidad.atk);
+        bool estaMuerto = entiWitch.RecibeDanioE(enemigoUnidad.atk);
         arduino.vibrarOn();
 
         Debug.Log("Actualizando HUD del jugador");
@@ -214,16 +227,17 @@ public class SistemaBatalla : MonoBehaviour
     void ElegirHechizo()
     {
         Debug.Log("Funcion elegir hechizo ejecutada");
-        mensajeTexto.text = "Escoje un hechizo";
+        mensajeTexto.text = "<b>Realiza un hechizo</b>";
     }
 
     public void BotonAtkArriba() //Ataque de Luz
     {
+        tipoAtk = "luz";
          if (estado != BattleState.ELEGIRHECHIZO)
             return;
-
+        
         arduino.amarilloOn();
-        mensajeTexto.text = "Has realizado un ataque de luz";
+        mensajeTexto.text = "Has realizado un <b><color=#f4be8a>hechizo de luz</color></b>";
 
         Debug.Log("Comienza atk arriba");
         estado = BattleState.TURNOJUGADOR;
@@ -238,11 +252,12 @@ public class SistemaBatalla : MonoBehaviour
     }
     public void BotonAtkAbajo() //Ataque de Agua
     {
+        tipoAtk = "agua";
         if (estado != BattleState.ELEGIRHECHIZO)
             return;
 
         arduino.blancoOn();
-        mensajeTexto.text = "Has realizado un ataque de agua";
+        mensajeTexto.text = "Has realizado un <b><color=#5b5bff>hechizo de agua</color></b>";
 
         Debug.Log("Comienza atk abajo");
         estado = BattleState.TURNOJUGADOR;
@@ -257,11 +272,12 @@ public class SistemaBatalla : MonoBehaviour
     }
     public void BotonAtkIzq() //Ataque de planta
     {
+        tipoAtk = "planta";
          if (estado != BattleState.ELEGIRHECHIZO)
              return;
 
         arduino.verdeOn();
-        mensajeTexto.text = "Has realizado un ataque de planta";
+        mensajeTexto.text = "Has realizado un <b><color=#008000>hechizo de planta</color></b>";
 
         Debug.Log("Comienza atk izquierda");
         estado = BattleState.TURNOJUGADOR;
@@ -275,12 +291,13 @@ public class SistemaBatalla : MonoBehaviour
         StartCoroutine(AtaqueJugador());
     }
     public void BotonAtkDer() //Ataque de fuego
-    {
+    {  
+        tipoAtk = "fuego";
         if (estado != BattleState.ELEGIRHECHIZO)
            return;
 
         arduino.rojoOn();
-        mensajeTexto.text = "Has realizado un ataque de fuego";
+        mensajeTexto.text = "Has realizado un <b><color=#ff3232>hechizo de fuego</color></b>";
 
         Debug.Log("Comienza atk derecha");
         estado = BattleState.TURNOJUGADOR;
@@ -299,12 +316,12 @@ public class SistemaBatalla : MonoBehaviour
         bool subeNivel;
         Debug.Log("Se ha ejectuado la funcion Resultados");
         yield return new WaitForSecondsRealtime(2);
-        mensajeTexto.text = "Haz obtenido " + enemigoUnidad.exp + " puntos de experiencia.";
+        mensajeTexto.text = "Haz obtenido <b>" + enemigoUnidad.exp + "</b> puntos de experiencia.";
 
         Debug.Log("Verificando si subio de nivel");
         entiWitch.exp += enemigoUnidad.exp; //Se suma la exp al jugador sin importar que pueda subir de nivel
 
-        if (enemigoUnidad.exp >= entiWitch.expSig)
+        if (entiWitch.exp >= entiWitch.expSig)
         {
             subeNivel = true;
             jugadorHUD.actExp(entiWitch.exp, entiWitch.expSig);
@@ -322,7 +339,7 @@ public class SistemaBatalla : MonoBehaviour
             yield return new WaitForSecondsRealtime(1);
 
             Debug.Log("Mostrando mensaje de subio nivel.");
-            mensajeTexto.text = "Has subido al nivel " + (entiWitch.nivel + 1) + ".";
+            mensajeTexto.text = "Has subido al nivel <b>" + (entiWitch.nivel + 1) + "</b>.";
             yield return new WaitForSeconds(1);
 
             resultadoHUD.mostrar(true); //Se muestra panel de resultados sin cambiar
@@ -343,5 +360,8 @@ public class SistemaBatalla : MonoBehaviour
             resultadoHUD.mostrar(false); //Se esconde el panel de resultados
             yield return new WaitForSeconds(1);
         }
+        Debug.Log("Terminando funcion resultados.");
+        estado = BattleState.SIGNIVEL;
+        Gana();
     }
 }

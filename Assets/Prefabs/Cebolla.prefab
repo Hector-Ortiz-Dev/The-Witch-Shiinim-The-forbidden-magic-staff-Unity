@@ -741,8 +741,8 @@ MonoBehaviour:
   tipo: 3
   nivel: 2
   exp: 10
-  vidaMax: 10
-  atk: 2
+  vidaMax: 20
+  atk: 14
   def: 0
   vel: 0
   buffVida: 0
