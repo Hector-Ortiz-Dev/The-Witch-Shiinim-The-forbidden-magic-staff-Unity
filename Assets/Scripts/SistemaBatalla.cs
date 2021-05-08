@@ -44,6 +44,8 @@ public class SistemaBatalla : MonoBehaviour
     int fase;
     string tipoAtk;
 
+    public Particulas efectosHechizos;
+
     void Start()
     {
         estado = BattleState.INICIO;
@@ -200,6 +202,8 @@ public class SistemaBatalla : MonoBehaviour
         Debug.Log("Esperando 1 segundo");
         yield return new WaitForSeconds(1f);
 
+        efectosHechizos.ataqueEnemigo();
+
         Debug.Log("Reduciendo vida del jugador");
         bool estaMuerto = entiWitch.RecibeDanioE(enemigoUnidad.atk);
         arduino.vibrarOn();
@@ -248,6 +252,8 @@ public class SistemaBatalla : MonoBehaviour
         Debug.Log("Rotacion reestablecida");
         entiWitch.transform.rotation = rotInicial;
 
+        efectosHechizos.hechizoLuz();
+
         StartCoroutine(AtaqueJugador());
     }
     public void BotonAtkAbajo() //Ataque de Agua
@@ -267,6 +273,8 @@ public class SistemaBatalla : MonoBehaviour
         entiWitch.anim.SetTrigger(Animator.StringToHash("Atk abajo"));
         Debug.Log("Rotacion reestablecida");
         entiWitch.transform.rotation = rotInicial;
+
+        efectosHechizos.hechizoAgua();
 
         StartCoroutine(AtaqueJugador());
     }
@@ -288,6 +296,8 @@ public class SistemaBatalla : MonoBehaviour
         Debug.Log("Rotacion reestablecida");
         entiWitch.transform.rotation = rotInicial;
 
+        efectosHechizos.hechizoPlanta();
+
         StartCoroutine(AtaqueJugador());
     }
     public void BotonAtkDer() //Ataque de fuego
@@ -307,6 +317,8 @@ public class SistemaBatalla : MonoBehaviour
         entiWitch.anim.SetTrigger(Animator.StringToHash("Atk derecha"));
         Debug.Log("Rotacion reestablecida");
         entiWitch.transform.rotation = rotInicial;
+
+        efectosHechizos.hechizoFuego();
 
         StartCoroutine(AtaqueJugador());
     }
