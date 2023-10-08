@@ -34,7 +34,7 @@ public class SistemaBatalla : MonoBehaviour
     public BatallaHUD enemigoHUD;
     public ResultadosHUD resultadoHUD;
 
-    public Arduino arduino;
+    //public Arduino arduino;
     float angleX;
     float angleY;
 
@@ -60,29 +60,29 @@ public class SistemaBatalla : MonoBehaviour
         jugadorHUD.llenarVida(entiWitch);
         enemigoHUD.llenarVida(enemigoUnidad);
 
-        angleX = arduino.leerX();
-        angleY = arduino.leerY();
-        Debug.Log("Angulo X: " + angleX);
-        Debug.Log("Angulo Y: " + angleY);
-        if (estado == BattleState.ELEGIRHECHIZO)
-        {
-            if (angleX <= 70 && angleX >= 45)
-            {
-                BotonAtkArriba();
-            }
-            else if (angleX <= -45 && angleX >= -70)
-            {
-                BotonAtkAbajo();
-            }
-            else if (angleY <= 70 && angleY >= 45)
-            {
-                BotonAtkDer();
-            }
-            else if (angleY <= -45 && angleY >= -70)
-            {
-                BotonAtkIzq();
-            }
-        }
+        // angleX = arduino.leerX();
+        // angleY = arduino.leerY();
+        // Debug.Log("Angulo X: " + angleX);
+        // Debug.Log("Angulo Y: " + angleY);
+        // if (estado == BattleState.ELEGIRHECHIZO)
+        // {
+        //     if (angleX <= 70 && angleX >= 45)
+        //     {
+        //         BotonAtkArriba();
+        //     }
+        //     else if (angleX <= -45 && angleX >= -70)
+        //     {
+        //         BotonAtkAbajo();
+        //     }
+        //     else if (angleY <= 70 && angleY >= 45)
+        //     {
+        //         BotonAtkDer();
+        //     }
+        //     else if (angleY <= -45 && angleY >= -70)
+        //     {
+        //         BotonAtkIzq();
+        //     }
+        // }
     }
 
     IEnumerator ConfigBatalla()
@@ -206,7 +206,7 @@ public class SistemaBatalla : MonoBehaviour
 
         Debug.Log("Reduciendo vida del jugador");
         bool estaMuerto = entiWitch.RecibeDanioE(enemigoUnidad.atk);
-        arduino.vibrarOn();
+        //arduino.vibrarOn();
 
         Debug.Log("Actualizando HUD del jugador");
         jugadorHUD.actVida(entiWitch.vidaActual, entiWitch.vidaMax);
@@ -240,7 +240,7 @@ public class SistemaBatalla : MonoBehaviour
          if (estado != BattleState.ELEGIRHECHIZO)
             return;
         
-        arduino.amarilloOn();
+        //arduino.amarilloOn();
         mensajeTexto.text = "Has realizado un <b><color=#f4be8a>hechizo de luz</color></b>";
 
         Debug.Log("Comienza atk arriba");
@@ -262,7 +262,7 @@ public class SistemaBatalla : MonoBehaviour
         if (estado != BattleState.ELEGIRHECHIZO)
             return;
 
-        arduino.blancoOn();
+        //arduino.blancoOn();
         mensajeTexto.text = "Has realizado un <b><color=#5b5bff>hechizo de agua</color></b>";
 
         Debug.Log("Comienza atk abajo");
@@ -284,7 +284,7 @@ public class SistemaBatalla : MonoBehaviour
          if (estado != BattleState.ELEGIRHECHIZO)
              return;
 
-        arduino.verdeOn();
+        //arduino.verdeOn();
         mensajeTexto.text = "Has realizado un <b><color=#008000>hechizo de planta</color></b>";
 
         Debug.Log("Comienza atk izquierda");
@@ -306,7 +306,7 @@ public class SistemaBatalla : MonoBehaviour
         if (estado != BattleState.ELEGIRHECHIZO)
            return;
 
-        arduino.rojoOn();
+        //arduino.rojoOn();
         mensajeTexto.text = "Has realizado un <b><color=#ff3232>hechizo de fuego</color></b>";
 
         Debug.Log("Comienza atk derecha");

@@ -593,10 +593,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nombre: BatEye
   tipo: 1
-  nivel: 7
-  exp: 200
-  vidaMax: 80
-  atk: 23
+  nivel: 6
+  exp: 30
+  vidaMax: 60
+  atk: 22
   def: 0
   vel: 0
   buffVida: 0

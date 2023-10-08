@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86c42477493738c41924a5cc656bb486, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nombre: Tonafro Legend
+  nombre: "To\xF1afroGOD"
   tipo: 6
   nivel: 999
   exp: 1

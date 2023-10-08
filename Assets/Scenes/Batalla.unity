@@ -16611,8 +16611,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 33.285, y: -25.2}
-  m_SizeDelta: {x: 174.7707, y: 13.4881}
+  m_AnchoredPosition: {x: 28.7, y: -25.3}
+  m_SizeDelta: {x: 212.0807, y: 16.3675}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1056348026
 MonoBehaviour:
@@ -16965,17 +16965,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1225661727}
-  m_LocalRotation: {x: -0, y: -0, z: -0.17364825, w: 0.9848078}
+  m_LocalRotation: {x: -0, y: -0, z: -0.16350082, w: 0.98654324}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 834400940}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -20}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -18.82}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 40.868866, y: -123.33885}
-  m_SizeDelta: {x: 38.9996, y: 13.4881}
+  m_AnchoredPosition: {x: 40.1, y: -125}
+  m_SizeDelta: {x: 47.6378, y: 16.4756}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1225661729
 MonoBehaviour:
@@ -17178,11 +17178,11 @@ MonoBehaviour:
   jugadorPrefab: {fileID: 7447808959806431977, guid: 5e70829ae633cd842999a409d5b1c9ab, type: 3}
   enemigoPrefab:
   - {fileID: 3331855374729911306, guid: 4484bbfcef41d4c45b37ec0025b2fa91, type: 3}
-  - {fileID: 3331855374729911306, guid: eea29e0ba445919418caa6a1cf155337, type: 3}
-  - {fileID: 4190189904449118371, guid: 6a8254978e5cd9f45a8848b9b68ae933, type: 3}
-  - {fileID: 9137944708856498486, guid: a02be4b27e42e7e42b97a01b4c11b76d, type: 3}
-  - {fileID: 8216497110545172498, guid: a592190cc53dd6746a493efc54148bd5, type: 3}
+  - {fileID: 8021387382813521010, guid: ac321646a5bfd304c823cea08b58136f, type: 3}
   - {fileID: 4653815123907004978, guid: f8a66badfd1f0694bba99941ae2ebece, type: 3}
+  - {fileID: 9137944708856498486, guid: a02be4b27e42e7e42b97a01b4c11b76d, type: 3}
+  - {fileID: 2015417793748559898, guid: 83306f29b60bb944d8150dc45238e1ee, type: 3}
+  - {fileID: 4348749963805636788, guid: 7aef813e56f6c724bb19c98a39555d5d, type: 3}
   - {fileID: 2010974456540122309, guid: 122c6ee550084c340ba0b7badc35fa9e, type: 3}
   - {fileID: 5499572865664776021, guid: ce69b878ecbb5554696958bfa4f74649, type: 3}
   - {fileID: 2015417793748559898, guid: 83306f29b60bb944d8150dc45238e1ee, type: 3}
@@ -17192,7 +17192,6 @@ MonoBehaviour:
   jugadorHUD: {fileID: 978536880}
   enemigoHUD: {fileID: 30169038}
   resultadoHUD: {fileID: 668409266}
-  arduino: {fileID: 1850689930}
   estado: 0
   efectosHechizos: {fileID: 2072853818}
 --- !u!4 &1288223784
@@ -22765,8 +22764,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 19.755}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 96.5, y: -122.4}
-  m_SizeDelta: {x: 38.9996, y: 13.4881}
+  m_AnchoredPosition: {x: 95.6, y: -124.4}
+  m_SizeDelta: {x: 44.2376, y: 15.2997}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1677961454
 MonoBehaviour:
@@ -23063,7 +23062,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1850689930
 MonoBehaviour:
   m_ObjectHideFlags: 0

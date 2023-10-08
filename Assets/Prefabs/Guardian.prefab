@@ -735,7 +735,7 @@ MonoBehaviour:
   nombre: Boss
   tipo: 5
   nivel: 100
-  exp: 800
+  exp: 250
   vidaMax: 2500
   atk: 500
   def: 0
